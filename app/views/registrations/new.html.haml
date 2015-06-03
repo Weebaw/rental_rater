@@ -1,0 +1,20 @@
+%h1
+  Sign Up Form
+
+=form_for @user, url: sign_up_path do |f|
+  =f.label :first_name
+  =f.text_field :first_name
+
+  =f.label :last_name
+  =f.text_field :last_name
+
+  =f.label :email
+  =f.email_field :email
+
+  =f.label :password
+  =f.password_field :password
+
+  =f.label :password_confirmation
+  =f.password_field :password_confirmation
+
+  =f.submit
