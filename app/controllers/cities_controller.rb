@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
   end
 
   def create
-    @city = city.new(city_params)
+    @city = City.new(city_params)
       if @city.save
         flash[:notice] = "#{@city.name} has been creaeted"
         redirect_to "/"
@@ -44,5 +44,11 @@ class CitiesController < ApplicationController
     flash[:notice] = "You just deleted #{@city.name}"
     redirect_to "/"
   end
-  
+
+  private
+
+  def city_params
+    params.require(:city).permit(:name)
+  end
+
 end

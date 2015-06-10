@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
 
-  def index
 
+  def index
+    @cities = City.all
   end
 
 end
