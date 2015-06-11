@@ -13,6 +13,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'rails_12factor', '~> 0.0.3', group: :production
+gem 'jquery-rails'  
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 

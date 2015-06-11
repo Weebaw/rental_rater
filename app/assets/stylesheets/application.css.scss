@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+
+ .little-box{
+   width: 500px;
+   height: 500px;
+ }
+ 

@@ -11,7 +11,7 @@ class CitiesController < ApplicationController
   def create
     @city = City.new(city_params)
       if @city.save
-        flash[:notice] = "#{@city.name} has been creaeted"
+        flash[:notice] = "#{@city.name} has been created"
         redirect_to "/"
       else
         render :new

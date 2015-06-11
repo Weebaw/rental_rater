@@ -1,0 +1,10 @@
+.container
+  .page-header
+    %h1
+      Listing All Properties
+
+  =link_to "New Property", new_city_property_path
+  %br
+  -@properties.each do |property|
+    =link_to "#{property.home_info}", city_property_path(@city, property)
+    %br

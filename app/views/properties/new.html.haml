@@ -1,0 +1,35 @@
+.container
+  .page-header
+    %h1
+      New Property Form
+
+  =form_for [@city, @property] do |f|
+
+    .form-group
+      .col-sm-6
+        =f.label :address, "*Address", class: "control-label"
+        =f.text_field :address, class: "form-control"
+
+    .form-group
+      .col-sm-6
+        =f.label :building_name, class: "control-label"
+        =f.text_field :building_name, class: "form-control"
+
+    .form-group
+      .col-sm-6
+        =f.label :apt_number, "Apartment Number", class: "control-label"
+        =f.text_field :apt_number, class: "form-control"
+
+    .form-group
+      .col-sm-6
+        =f.label :city_name, "*City", class: "control-label"
+        =f.text_field :city_name, class: "form-control"
+
+    .form-group
+      .col-sm-6
+        =f.label :landlord, "*Landlord/Rental Company", class: "control-label"
+        =f.text_field :landlord, class: "form-control"
+
+    .form-group
+      .col-sm-3
+        =f.submit "Create Property", class: "btn btn-danger"

@@ -5,7 +5,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :building_type
       t.string :building_name
       t.string :apt_number
-      t.string :city
+      t.string :city_name
       t.string :landlord
       t.integer :rating_total
       t.integer :city_id
