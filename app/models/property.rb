@@ -12,4 +12,7 @@ class Property < ActiveRecord::Base
     "#{self.address}, Unit: #{self.apt_number}, #{self.city_name}, CO."
   end
 
+  def average_rating
+    Comment.where(property_id: self.id).map { |comment| comment.rating }
+  end
 end

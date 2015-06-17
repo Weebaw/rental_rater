@@ -1,17 +1,30 @@
-.container
-  .page-header
-    %h1
-      Welcome To Rental Rater
+.home-background.bg
+  .container
+    .page-header
+      %h1.white
+        Welcome To Rental Rater
+
+    %iframe{:frameborder => "0",
+            :width => "642",
+            :height => "480",
+            :scrolling => "no",
+            :src => "map.html"}
+
+    .well.right
+      %h5
+        = link_to "Sign Up", sign_up_path, class: "btn btn-sign-in"
+        %br
+        %br
+        = link_to "Sign In", sign_in_path, class: "btn btn-sign-in"
 
 
 
+    %h3.white
+      Select your City
+
+    - @cities.each do |city|
+
+      = link_to "#{city.name}, CO", city_properties_path(city), class: "btn btn-default"
 
 
-  %h3
-    Select your City
-
-  - @cities.each do |city|
-
-    = link_to "#{city.name}, CO", city_properties_path(city)
-
-  =link_to "New City", new_city_path
+    =link_to "New City", new_city_path, class: "btn btn-info"

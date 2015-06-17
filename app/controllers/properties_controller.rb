@@ -1,10 +1,11 @@
 class PropertiesController < ApplicationController
   before_action do
     @city = City.find(params[:city_id])
+
   end
 
   def index
-    @properties = Property.all
+    @properties = @city.properties.all
   end
 
   def new
@@ -24,6 +25,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -52,6 +54,10 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit(:address, :building_type, :building_name, :apt_number, :city_name, :landlord, :rating_total)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:comment, :rating, :dates).merge(property_id: params[:property_id])
   end
 
 end

@@ -1,38 +1,33 @@
 class CommentsController < ApplicationController
-
-
-  def index
-    @comments = Comment.all
-  end
+before_action do
+  @city = City.find(params[:city_id])
+  @property = Property.find(params[:property_id])
+end
 
   def new
-    @comment = Comment.new
+    @comment = @property.comments.new
   end
 
   def create
-    @comment = Comment.new(comment_params.merge(city: @city, property: @property))
+    @comment = @property.comments.new(comment_params.merge(city: @city, property: @property))
     if @comment.save
       flash[:notice] = "Your comment has been created"
-      redirect_to "/"
+      redirect_to city_property_path(@property)
     else
       render :new
       flash[:notice] = "Something went wrong"
     end
   end
 
-  def show
-    @comment = Comment.find(params[:id])
-  end
-
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = @property.comments.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
+    @comment = @property.comments.find(params[:id])
     if @comment.update(comment_params)
       flash[:notice] = "You have updated your comment"
-      redirect_to "/"
+      redirect_to city_property_path(@property)
     else
       render :new
       flash[:notice] = "Something went wrong"
@@ -40,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def delete
-    @comment = Comment.find(params[:id])
+    @comment = @property.comments.find(params[:id])
     @comment.delete
     flash[:notice] = "You just deleted your comment"
     redirect_to "/"
@@ -48,8 +43,8 @@ class CommentsController < ApplicationController
 
   private
 
-  def property_params
-    params.require(:comment).permit(:comment, :rating, dates)
+  def comment_params
+    params.require(:comment).permit(:comment, :rating, :dates).merge(property_id: params[:property_id])
   end
 
 end

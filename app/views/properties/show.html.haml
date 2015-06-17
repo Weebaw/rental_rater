@@ -10,3 +10,23 @@
       ="Rental Company: #{@property.landlord}"
       %br
       ="Overall Rating: "
+
+  %iframe{:frameborder => "0",
+          :width => "642",
+          :height => "480",
+          :scrolling => "no",
+          :src => "/map1.html"}
+
+  =form_for [@city, @property, @comment] do |f|
+
+    .form-group
+      =f.label :dates, "Dates Occupied", class: "control-label"
+      =f.date_field :dates, class: "form-control"
+
+    .form-group
+      =f.label :comment, class: "control-label"
+      =f.text_area :comment, class: "form-control"
+
+
+
+  =link_to "Index", root_path

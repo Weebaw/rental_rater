@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
 
   resources :cities do
-    resources :properties
+    resources :properties do
+      resources :comments
+    end
   end
 
 

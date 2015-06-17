@@ -1,10 +1,26 @@
 .container
   .page-header
     %h1
-      Listing All Properties
+      Listing All Properties for
+      %span{id: 'city'}= @city.name
+
+
+  %iframe{:frameborder => "0",
+          :width => "642",
+          :height => "480",
+          :scrolling => "no",
+          :src => "/map.html"}
 
   =link_to "New Property", new_city_property_path
+
   %br
   -@properties.each do |property|
-    =link_to "#{property.home_info}", city_property_path(@city, property)
-    %br
+
+    -if property.city == @city
+
+      =link_to "#{property.home_info}", city_property_path(@city, property), class: "btn btn-default"
+      %br
+
+
+
+  =link_to "Index", root_path
