@@ -3,6 +3,7 @@
     %h1
       Property Show Page
 
+
   .well.col-md-5
     .text-center
       ="Street Address: #{@property.address}"
@@ -11,11 +12,7 @@
       %br
       ="Overall Rating: "
 
-  %iframe{:frameborder => "0",
-          :width => "642",
-          :height => "480",
-          :scrolling => "no",
-          :src => "/map1.html"}
+  .show-map
 
   =form_for [@city, @property, @comment] do |f|
 
