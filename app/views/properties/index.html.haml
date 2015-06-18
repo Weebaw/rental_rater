@@ -2,14 +2,10 @@
   .page-header
     %h1
       Listing All Properties for
-      %span{id: 'city'}= @city.name
+      %span{id: 'city', "city-id" => @city.id}= @city.name
 
 
-  %iframe{:frameborder => "0",
-          :width => "642",
-          :height => "480",
-          :scrolling => "no",
-          :src => "/map.html"}
+  .show-map
 
   =link_to "New Property", new_city_property_path
 

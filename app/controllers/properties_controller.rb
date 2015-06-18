@@ -6,6 +6,10 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = @city.properties.all
+    respond_to do |format|
+      format.json { render json: @properties.to_json }
+      format.html { @properties }
+    end
   end
 
   def new
@@ -14,6 +18,9 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params.merge(city: @city))
+
+    #convert address to lat/long
+
     if @property.save
       flash[:notice] = "#{@property.address}, #{@property.city_name}, CO has been created"
       redirect_to city_properties_path(@city)
@@ -26,6 +33,10 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @comment = Comment.new
+    respond_to do |format|
+      format.json{ render json: @property.to_json }
+      format.html { @property}
+    end
   end
 
   def edit
