@@ -1,20 +1,29 @@
-%h1
-  Sign Up Form
+.container
+  .page-header
+    %h1
+      Sign Up Form
 
-=form_for @user, url: sign_up_path do |f|
-  =f.label :first_name
-  =f.text_field :first_name
+  .well.col-md-6.center
+    =form_for @user, url: sign_up_path do |f|
+      .form-group
+        =f.label :first_name, class: "control-label"
+        =f.text_field :first_name, class: "form-control"
 
-  =f.label :last_name
-  =f.text_field :last_name
+      .form-group
+        =f.label :last_name, class: "control-label"
+        =f.text_field :last_name, class: "form-control"
 
-  =f.label :email
-  =f.email_field :email
+      .form-group
+        =f.label :email, class: "control-label"
+        =f.email_field :email, class: "form-control"
 
-  =f.label :password
-  =f.password_field :password
+      .form-group
+        =f.label :password, class: "control-label"
+        =f.password_field :password, class: "form-control"
 
-  =f.label :password_confirmation
-  =f.password_field :password_confirmation
+      .form-group
+        =f.label :password_confirmation, class: "control-label"
+        =f.password_field :password_confirmation, class: "form-control"
 
-  =f.submit "Create Account"
+      .form-group
+        =f.submit "Create Account"

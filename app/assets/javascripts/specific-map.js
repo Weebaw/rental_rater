@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
     $.ajax({
-      url: "/cities/" + $("#city").attr("city-id") + "/properties/" + $("#property").attr("property-id"),
+      url: "/cities/" + $("#city").attr("city-id") + "/properties/" + $("#property").attr("property-id") + ".json",
       typeFormat: "json",
       success: function(obj) {
         var mapOptions = {

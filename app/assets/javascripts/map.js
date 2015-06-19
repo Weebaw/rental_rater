@@ -33,9 +33,10 @@ $(document).ready(function() {
     );
 
     $.ajax({
-      url: "/cities/" + $("#city").attr("city-id") + "/properties",
+      url: "/cities/" + $("#city").attr("city-id") + "/properties"+ ".json",
       typeFormat: "json",
       success: function(data) {
+        debugger;
         // data is going to be array of your properties which have lat/long methods
         data.forEach(function(obj) {
           // obj.long = -105.02496;

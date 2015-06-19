@@ -1,7 +1,7 @@
 class Property < ActiveRecord::Base
 
   belongs_to :city
-  has_many :comments, through: :users
+  has_many :comments
 
   geocoded_by :home_info
 #doesn't recognize geocoded_by
@@ -18,6 +18,14 @@ class Property < ActiveRecord::Base
   end
 
   def average_rating
-    Comment.where(property_id: self.id).map { |comment| comment.rating }
+    total_comments = self.comments.count
+    comments = Comment.where(property_id: self.id).map { |comment| comment.rating }
+    comments.inject{ |sum, el| sum + el }.to_f / comments.size
   end
+
+  # def average_rating
+  #   Comment.where(property_id: self.id).map { |comment| comment.rating }
+  # end
+
+
 end

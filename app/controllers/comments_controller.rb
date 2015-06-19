@@ -9,12 +9,12 @@ end
   end
 
   def create
-    @comment = @property.comments.new(comment_params.merge(city: @city, property: @property))
+    @comment = @property.comments.new(comment_params)
     if @comment.save
       flash[:notice] = "Your comment has been created"
-      redirect_to city_property_path(@property)
+      redirect_to city_property_path(@property.city, @property)
     else
-      render :new
+      redirect_to city_property_path(@property.city, @property)
       flash[:notice] = "Something went wrong"
     end
   end
@@ -29,7 +29,7 @@ end
       flash[:notice] = "You have updated your comment"
       redirect_to city_property_path(@property)
     else
-      render :new
+      render :properties => "show"
       flash[:notice] = "Something went wrong"
     end
   end
@@ -44,7 +44,6 @@ end
   private
 
   def comment_params
-    params.require(:comment).permit(:comment, :rating, :dates).merge(property_id: params[:property_id])
+    params.require(:comment).permit(:comment, :rating, :dates, :date_out).merge(property_id: params[:property_id], user_id: current_user.id)
   end
-
 end

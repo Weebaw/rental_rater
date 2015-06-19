@@ -22,5 +22,5 @@
 
       = link_to "#{city.name}, CO", city_properties_path(city), class: "btn btn-default"
 
-
-    =link_to "New City", new_city_path, class: "btn btn-info"
+    -if current_user.admin == true
+      =link_to "New City", new_city_path, class: "btn btn-info"

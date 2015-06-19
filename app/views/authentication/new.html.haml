@@ -1,11 +1,18 @@
-%h1
-  Sign In Form
+.container
+  .page-header
+    %h1
+      Sign In Form
 
-=form_tag sign_in_path do |f|
-  =label_tag :email
-  =email_field_tag :email
+  .well.col-md-3
+    =form_tag sign_in_path do |f|
 
-  =label_tag :password
-  =password_field_tag :password
+      .form-group
+        =label_tag :email
+        =email_field_tag :email
 
-  =submit_tag "Sign In"
+      .form-group
+        =label_tag :password
+        =password_field_tag :password
+
+      .form-group.col-md-offset-4
+        =submit_tag "Sign In"
