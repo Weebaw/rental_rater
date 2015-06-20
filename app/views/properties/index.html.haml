@@ -7,16 +7,14 @@
 
   .show-map
 
-  =link_to "New Property", new_city_property_path
+  =link_to "Home", root_path, class: "btn btn-xs btn-danger"
+  =link_to "Add Property", new_city_property_path, class: "btn btn-xs  btn-primary"
 
   %br
   -@properties.each do |property|
 
     -if property.city == @city
-
-      =link_to "#{property.home_info}", city_property_path(@city, property), class: "btn btn-default"
+      .row
+        .col-md-3
+          =link_to " #{property.home_info}", city_property_path(@city, property), class: "glyphicon glyphicon-home btn btn-default"
       %br
-
-
-
-  =link_to "Index", root_path
