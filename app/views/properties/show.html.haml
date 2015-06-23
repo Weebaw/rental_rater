@@ -3,7 +3,7 @@
     %h1
       Showing Property:
       %span{id: 'property', "property-id" => @property.id}= @property.address
-      %span{id: "city", "city-id": @city.id}= @city.name + ", CO"
+      %span{id: "city", "city-id" => @city.id}= @city.name + ", CO"
 
 
   .well.col-md-5
