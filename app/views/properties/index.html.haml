@@ -1,20 +1,21 @@
-.container
-  .page-header
-    %h1
-      Listing All Properties for
-      %span{id: 'city', "city-id" => @city.id}= @city.name
+.gradient
+  .container
+    .page-header
+      %h1
+        Listing All Properties for
+        %span{id: 'city', "city-id" => @city.id}= @city.name
 
 
-  .show-map
+    .show-map
 
-  =link_to "Home", root_path, class: "btn btn-xs btn-danger"
-  =link_to "Add Property", new_city_property_path, class: "btn btn-xs  btn-primary"
+    =link_to "Home", root_path, class: "btn btn-xs btn-danger"
+    =link_to "Add Property", new_city_property_path, class: "btn btn-xs  btn-primary"
 
-  %br
-  -@properties.each do |property|
+    %br
+    -@properties.each do |property|
 
-    -if property.city == @city
-      .row
-        .col-md-3
-          =link_to " #{property.home_info}", city_property_path(@city, property), class: "glyphicon glyphicon-home btn btn-default"
-      %br
+      -if property.city == @city
+        .row
+          .col-md-3
+            =link_to " #{property.home_info}", city_property_path(@city, property), class: "glyphicon glyphicon-home btn btn-default"
+        %br

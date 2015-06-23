@@ -1,18 +1,19 @@
-.container
-  .page-header
-    %h1
-      Sign In Form
+.rent_image
+  .container
+    .page-header
+      %h1
+        Sign In Form
 
-  .well.col-md-3
-    =form_tag sign_in_path do |f|
+    .well.center_page
+      =form_tag sign_in_path do |f|
 
-      .form-group
-        =label_tag :email
-        =email_field_tag :email
+        .form-group.text-center
+          =label_tag :email, nil, class: 'control-label'
+          =email_field_tag :email, nil, class: 'form-control'
 
-      .form-group
-        =label_tag :password
-        =password_field_tag :password
+        .form-group.text-center
+          =label_tag :password, nil, class: 'control-label'
+          =password_field_tag :password, "Password", class: 'form-control'
 
-      .form-group.col-md-offset-4
-        =submit_tag "Sign In"
+        .form-group.col-md-offset-4
+          =submit_tag "Sign In"

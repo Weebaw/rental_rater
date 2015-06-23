@@ -49,11 +49,20 @@ $(document).ready(function() {
         })
       }
     })
+  }
 
     // var marker = new google.maps.Marker({
     //   position: new google.maps.LatLng(39.463347, -105.02496),
     //   map: map
     // });
-
-  }
+    // google.maps.event.addListener(marker, 'click');
+    // $('.btn').on('mouseover', bounce)
+// function bounce() {
+//   // Is the marker already animating?
+//   if (marker.getAnimation()) {
+//     marker.setAnimation(null);
+//   } else {
+//     marker.setAnimation(google.maps.Animation.BOUNCE);
+//   }
+// }
 });

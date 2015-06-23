@@ -19,6 +19,11 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params.merge(city: @city))
     if @property.save
+
+      #generate property map --> address must get passed to the map
+
+
+
       flash[:notice] = "#{@property.address}, #{@property.city_name}, CO has been created"
       redirect_to city_properties_path(@city)
     else
@@ -62,13 +67,11 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:address, :building_type, :building_name, :apt_number, :city_name, :landlord, :rating_total)
+    params.require(:property).permit(:address, :building_type, :building_name, :apt_number, :city_name, :landlord, :rating_total, :logitude, :latitude)
   end
 
   def comment_params
-    p current_user
-    p current_user.id
-    p params.require(:comment).permit(:comment, :rating, :dates, :date_out).merge(property_id: params[:property_id], user_id: current_user.id)
+ params.require(:comment).permit(:comment, :rating, :dates, :date_out).merge(property_id: params[:property_id], user_id: current_user.id)
   end
 
 end

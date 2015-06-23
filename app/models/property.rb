@@ -23,9 +23,6 @@ class Property < ActiveRecord::Base
     comments.inject{ |sum, el| sum + el }.to_f / comments.size
   end
 
-  # def average_rating
-  #   Comment.where(property_id: self.id).map { |comment| comment.rating }
-  # end
 
 
 end

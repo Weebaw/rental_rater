@@ -10,10 +10,10 @@ $(document).ready(function() {
       document.querySelector('.state-map'), mapOptions
     );
 
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(39.463347, -105.02496),
-      map: map
-    });
+    // var marker = new google.maps.Marker({
+    //   position: new google.maps.LatLng(39.463347, -105.02496),
+    //   map: map
+    // });
   }
 
 });
