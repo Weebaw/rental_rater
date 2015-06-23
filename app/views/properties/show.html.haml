@@ -16,11 +16,6 @@
       %br
       ="Overall Rating: #{@property.average_rating.round(2)}"
       %br
-      -# ="Nearby Locations:"
-      -# -for property in @city.property.nearbys(5)
-      -#   -@property.nearbys(5) do |property|
-      -#     .li
-      -#       =link_to property.address, root_path
       .text-center
         =link_to "Home", root_path, class: "btn btn-xs btn-danger"
     -unless current_user
@@ -108,6 +103,3 @@
                   = "#{comment.rating}"
             %td.col-md-2
               = "#{comment.dates}  -  #{comment.date_out}"
-            -if current_user && current_user.admin == true
-              %td
-                = link_to 'Delete', city_property_comment_path(@city, @comment), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger"
