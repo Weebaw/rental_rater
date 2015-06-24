@@ -36,33 +36,27 @@ $(document).ready(function() {
       url: "/cities/" + $("#city").attr("city-id") + "/properties"+ ".json",
       typeFormat: "json",
       success: function(data) {
-        debugger;
         // data is going to be array of your properties which have lat/long methods
         data.forEach(function(obj) {
           // obj.long = -105.02496;
           // obj.lat = 39.463347;
-          // debugger;
+          debugger;
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(obj.latitude, obj.longitude),
-            map: map
+            map: map,
+            address: obj.address,
+            prop_link: "http://localhost:3000/cities/" + $("#city").attr("city-id") + "/properties" + obj.id
+          });
+
+          google.maps.event.addListener(marker, 'click', function() {
+            console.log(marker.prop_link);
+            alert(marker.address)
+            // map.setCenter(marker.getPosition());
           });
         })
       }
     })
   }
 
-    // var marker = new google.maps.Marker({
-    //   position: new google.maps.LatLng(39.463347, -105.02496),
-    //   map: map
-    // });
-    // google.maps.event.addListener(marker, 'click');
-    // $('.btn').on('mouseover', bounce)
-// function bounce() {
-//   // Is the marker already animating?
-//   if (marker.getAnimation()) {
-//     marker.setAnimation(null);
-//   } else {
-//     marker.setAnimation(google.maps.Animation.BOUNCE);
-//   }
-// }
+
 });

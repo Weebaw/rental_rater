@@ -16,6 +16,15 @@
       %br
       ="Overall Rating: #{@property.average_rating.round(2)}"
       %br
+      ="Nearby Locations:"
+      -for property in @property.nearbys(5)
+        -if @property.nearbys(5)
+          .li
+            =link_to property.address, city_property_path(@city, property)
+        -else
+          %b
+            No nearby properties yet
+
       .text-center
         =link_to "Home", root_path, class: "btn btn-xs btn-danger"
     -unless current_user

@@ -14,7 +14,6 @@ $(document).ready(function() {
   // what values do I provide the map for long/lat
 
 
-
     $.ajax({
       url: "/cities/" + $("#city").attr("city-id") + "/properties/" + $("#property").attr("property-id") + ".json",
       typeFormat: "json",

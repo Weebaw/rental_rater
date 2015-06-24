@@ -30,12 +30,7 @@ Please feel free to use a different markup language if you do not plan to run
 
 --> For nearbys in show page
 
-      -# ="Nearby Locations:"
-      -# -for property in @city.property.nearbys(5)
-      -#   -@property.nearbys(5) do |property|
-      -#     .li
-      -#       =link_to property.address, root_path
-
+      
 
 --> For admin on show page
 

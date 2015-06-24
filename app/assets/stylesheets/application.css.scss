@@ -44,10 +44,30 @@
 
 .gradient2{
   background: -webkit-linear-gradient(right bottom, green , yellow ,  red);
+  min-height: 100%;
+  min-width: 1024px;
+
+  width: 100%;
+  height: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-size: cover;
 }
 
  .home-background{
    background-image: url("https://creativepulse.files.wordpress.com/2013/05/mountains-azalea-sunset.jpg");
+   min-height: 100%;
+   min-width: 1024px;
+
+   width: 100%;
+   height: auto;
+
+   position: fixed;
+   top: 0;
+   left: 0;
    background-size: cover;
  }
 
@@ -72,13 +92,13 @@
  }
 
  .center_page{
-   top: 250px;
-   right: 500px;
+   top: 350px;
+   right: 430px;
   //  margin-left: auto;
   //  margin-right: auto;
    position: fixed;
    width: 20%;
-   border: 1px solid;
+   border: 3px solid;
    background-color: BlanchedAlmond
  }
 
