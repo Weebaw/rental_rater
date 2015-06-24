@@ -30,10 +30,6 @@ Please feel free to use a different markup language if you do not plan to run
 
 --> For nearbys in show page
 
-      
+
 
 --> For admin on show page
-
-            -# -if current_user && current_user.admin == true
-            -#   %td
-                -# = link_to 'Delete', city_property_comment_path(@city, @comment), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger"

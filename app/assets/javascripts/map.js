@@ -40,7 +40,6 @@ $(document).ready(function() {
         data.forEach(function(obj) {
           // obj.long = -105.02496;
           // obj.lat = 39.463347;
-          debugger;
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(obj.latitude, obj.longitude),
             map: map,

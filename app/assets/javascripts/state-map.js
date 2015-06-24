@@ -47,16 +47,16 @@ $(document).ready(function() {
 
   }
     // google.maps.event.addListener(marker, 'mouseover');
-    $('.btn').on('mouseover', bounce)
-
-    function bounce() {
-      console.log("this:", this);
-      console.log("markers", markers);
-      if (marker.getAnimation()) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
+    // $('.btn').on('mouseover', bounce)
+    //
+    // function bounce() {
+    //   console.log("this:", this);
+    //   console.log("markers", markers);
+    //   if (marker.getAnimation()) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // }
 
 });

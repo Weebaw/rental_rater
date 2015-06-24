@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-before_action do
-  @city = City.find(params[:city_id])
-  @property = Property.find(params[:property_id])
-end
+
+  before_action :find_city, except: [:destroy]
+  before_action :find_property, except: [:destroy]
+
 
   def new
     @comment = @property.comments.new
@@ -34,14 +34,23 @@ end
     end
   end
 
-  def delete
-    @comment = @property.comments.find(params[:id])
+  def destroy
+
+    @comment = Comment.find(params[:id])
     @comment.delete
     flash[:notice] = "You just deleted your comment"
     redirect_to "/"
   end
 
   private
+
+  def find_city
+    @city = City.find(params[:city_id])
+  end
+
+  def find_property
+    @property = Property.find(params[:property_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:comment, :rating, :dates, :date_out).merge(property_id: params[:property_id], user_id: current_user.id)

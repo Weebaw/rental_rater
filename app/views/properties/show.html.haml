@@ -1,114 +1,117 @@
-.container
-  .page-header
-    %h1
-      Showing Property:
-      %span{id: 'property', "property-id" => @property.id}= @property.address
-      %span{id: "city", "city-id" => @city.id}= @city.name + ", CO"
-
-
-  .well.col-md-5
-    .text-center
-      %h4
-        Property Info:
-      ="Street Address: #{@property.address}"
-      %br
-      ="Rental Company: #{@property.landlord}"
-      %br
-      ="Overall Rating: #{@property.average_rating.round(2)}"
-      %br
-      ="Nearby Locations:"
-      -for property in @property.nearbys(5)
-        -if @property.nearbys(5)
-          .li
-            =link_to property.address, city_property_path(@city, property)
-        -else
-          %b
-            No nearby properties yet
-
-      .text-center
-        =link_to "Home", root_path, class: "btn btn-xs btn-danger"
-    -unless current_user
-      .text-center
-        %b
-          Sign in to leave a comment and rating
-
-
-  .specific-map
-  %br
-
-
+.gradient
   .container
-  -if current_user
+    .page-header
+      %h1.glow_text
+        Showing Property:
+        %span{id: 'property', "property-id" => @property.id}= @property.address
+        %span{id: "city", "city-id" => @city.id}= @city.name + ", CO"
 
-    =form_for [@city, @property, @comment] do |f|
 
-      .row
-        .form-group.col-md-3
-          =f.label :dates, "Move In", class: "control-label"
-          =f.date_field :dates, class: "form-control"
+    .well.col-md-5
+      .text-center
+        %h4
+          Property Info:
+        ="Street Address: #{@property.address}"
+        %br
+        ="Rental Company: #{@property.landlord}"
+        %br
+        -if @property.building_name.present?
+          ="Building Name: #{@property.building_name}"
+          %br
+        ="Overall Rating: #{@property.average_rating.round(2)}"
+        %br
+        ="Nearby Locations:"
+        -for property in @property.nearbys(5)
+          -if @property.nearbys(5)
+            .li
+              =link_to property.address, city_property_path(@city, property)
+        .text-center
+          =link_to "Home", root_path, class: "btn btn-xs btn-danger"
+      -unless current_user
+        .text-center
+          %b
+            Sign in to leave a comment and rating
 
-        .form-group.col-md-offset-1.col-md-3
-          =f.label :date_out, "Move Out", class: "control-label"
-          =f.date_field :date_out, class: "form-control"
 
-      .form-group
-        =f.label :comment, class: "control-label"
-        =f.text_area :comment, class: "form-control"
+    .specific-map
+    %br
 
-      .form-group
-        =f.hidden_field :rating, :value => "0"
-      %span#star-1.glyphicon.glyphicon-star-empty
-      %span#star-2.glyphicon.glyphicon-star-empty
-      %span#star-3.glyphicon.glyphicon-star-empty
-      %span#star-4.glyphicon.glyphicon-star-empty
-      %span#star-5.glyphicon.glyphicon-star-empty
 
-      :javascript
-        $('.glyphicon').click(function(event){
-          $(".glyphicon").addClass("glyphicon-star-empty")
-          var id = $(event.target).attr('id').split('-')[1]
-          $('#comment_rating').val(id)
-          var icons = $(".glyphicon-star-empty");
-          for (var i = 0; i < id; i++) {
-            $(icons[i]).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
-          }
-        })
+    .container
+    -if current_user
 
-        $('.glyphicon').mouseover(function(data){
+      =form_for [@city, @property, @comment] do |f|
 
-        })
+        .well
+          .row
+            .form-group.col-md-3
+              =f.label :dates, "Move In", class: "control-label"
+              =f.date_field :dates, class: "form-control"
 
-      .form-group
-        =f.submit "Submit Review"
+            .form-group.col-md-offset-1.col-md-3
+              =f.label :date_out, "Move Out", class: "control-label"
+              =f.date_field :date_out, class: "form-control"
 
-  =link_to "Home", root_path
+          .form-group
+            =f.label :comment, class: "control-label"
+            =f.text_area :comment, class: "form-control"
 
-  %table.table.table-striped.table-condensed.table-bordered.table-hover
-    %thead
-      %tr
-        %th
-          %b User
-        %th
-          %b Comment
-        %th
-          %b Rating
-        %th
-          %b Dates Occupied
-      %tbody
-        -@property.comments.each do |comment|
-          %tr
-            %td
-              ="#{comment.user.first_name}"
-            %td
-              ="#{comment.comment}"
-              -if comment.rating >= 4
-                %td.success
-                  = "#{comment.rating}"
-              -elsif comment.rating <=2
-                %td.danger
-                  = "#{comment.rating}"
-              -else
+          .form-group
+            =f.label :rating, class: "control-label"
+            =f.hidden_field :rating, :value => "0"
+          %span#star-1.glyphicon.glyphicon-star-empty
+          %span#star-2.glyphicon.glyphicon-star-empty
+          %span#star-3.glyphicon.glyphicon-star-empty
+          %span#star-4.glyphicon.glyphicon-star-empty
+          %span#star-5.glyphicon.glyphicon-star-empty
+
+          :javascript
+            $('.glyphicon').click(function(event){
+              $(".glyphicon").addClass("glyphicon-star-empty")
+              var id = $(event.target).attr('id').split('-')[1]
+              $('#comment_rating').val(id)
+              var icons = $(".glyphicon-star-empty");
+              for (var i = 0; i < id; i++) {
+                $(icons[i]).removeClass("glyphicon-star-empty").addClass("glyphicon-star");
+              }
+            })
+
+            $('.glyphicon').mouseover(function(data){
+
+            })
+
+          .form-group
+            =f.submit "Submit Review"
+
+    %table.table.table-striped.table-condensed.table-bordered.table-hover
+      %thead
+        %tr
+          %th
+            %b User
+          %th
+            %b Comment
+          %th
+            %b Rating
+          %th
+            %b Dates Occupied
+        %tbody
+          -@property.comments.each do |comment|
+            %tr
+              %td
+                ="#{comment.user.first_name}"
+              %td
+                ="#{comment.comment}"
+                -if comment.rating >= 4
+                  %td.success
+                    = "#{comment.rating}"
+                -elsif comment.rating <=2
+                  %td.danger
+                    = "#{comment.rating}"
+                -else
+                  %td
+                    = "#{comment.rating}"
+              %td.col-md-2
+                = "#{comment.dates}  -  #{comment.date_out}"
+              -if current_user && current_user.admin == true
                 %td
-                  = "#{comment.rating}"
-            %td.col-md-2
-              = "#{comment.dates}  -  #{comment.date_out}"
+                  = link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger"

@@ -38,12 +38,8 @@
   border: 1px solid;
  }
 
-.gradient{
-  background: -webkit-linear-gradient(left top, red , yellow ,  blue);
-}
-
 .gradient2{
-  background: -webkit-linear-gradient(right bottom, green , yellow ,  red);
+  background: linear-gradient(191deg, #39e805, #0fd2ba, #0f47d2);
   min-height: 100%;
   min-width: 1024px;
 
@@ -51,6 +47,40 @@
   height: auto;
 
   position: fixed;
+  top: 0;
+  left: 0;
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 7s ease infinite;
+  -moz-animation: AnimationName 7s ease infinite;
+  animation: AnimationName 7s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0%{background-position:13% 0%}
+    50%{background-position:88% 100%}
+    100%{background-position:13% 0%}
+  }
+  @-moz-keyframes AnimationName {
+    0%{background-position:13% 0%}
+    50%{background-position:88% 100%}
+    100%{background-position:13% 0%}
+  }
+  @keyframes AnimationName {
+    0%{background-position:13% 0%}
+    50%{background-position:88% 100%}
+    100%{background-position:13% 0%}
+  }
+  // -webkit-linear-gradient(middle bottom, red , yellow ,  blue);
+}
+
+.gradient{
+  background: -webkit-linear-gradient(top, black, white);
+  min-height: 100%;
+  min-width: 1024px;
+
+  width: 100%;
+  height: auto;
+
   top: 0;
   left: 0;
 
@@ -108,7 +138,7 @@
     // margin-left: auto;
     // margin-right: auto;
    position: fixed;
-   border: 1px solid;
+   border: 3px solid;
    background-color: BlanchedAlmond
  }
 
@@ -131,7 +161,13 @@
 }
 
 .white{
+  font-family: "Fantasy", Oldtown, fantasy;
   color: #FFFFF0
+}
+
+.fantasy_font{
+  font-family: "Fantasy", Oldtown, fantasy;
+  text-shadow: 3px 3px 3px #000,
 }
 
 .shadow{
@@ -149,6 +185,8 @@
 .specific-map {
     height: 400px;
     width: 500px;
+    top: 3px;
+    left: 160px;
 }
 
 .show-map {
@@ -159,6 +197,11 @@
 .state-map {
   height: 469px;
   width: 639px;
+}
+
+.glow_text{
+    color: #fff;
+    text-shadow: -1px 1px 8px #00FFFF, 1px -1px 8px #ADFF2F;
 }
 
 .background_blue{

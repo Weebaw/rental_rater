@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   get "sign-in", to: "authentication#new"
   post "sign-in", to: "authentication#create"
 
+  resources :comments, only: [:destroy]
 
   resources :cities do
     resources :properties do
       resources :comments
     end
   end
+
 
 
 end
